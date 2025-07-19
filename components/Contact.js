@@ -26,47 +26,62 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-3xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-800">Hablemos </h2>
-        <p className="text-gray-600 mb-12">
-          ¿Tienes un proyecto en mente? Rellena este formulario y me pondré en contacto contigo lo antes posible.
+    <section id="contact" className="py-28 bg-[#111827] text-white">
+      <div className="max-w-2xl mx-auto px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">¿Trabajamos juntos?</h2>
+        <p className="text-gray-300 mb-10">
+          Rellena el formulario y cuéntame qué necesitas. Te responderé lo antes posible.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <input
-            type="text"
-            name="name"
-            placeholder="Tu nombre"
-            required
-            className="w-full border border-gray-300 p-3 rounded-lg"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Tu correo electrónico"
-            required
-            className="w-full border border-gray-300 p-3 rounded-lg"
-          />
-          <textarea
-            name="message"
-            rows="5"
-            placeholder="Tu mensaje"
-            required
-            className="w-full border border-gray-300 p-3 rounded-lg"
-          ></textarea>
+        <form onSubmit={handleSubmit} className="space-y-6 text-left">
+          <div>
+            <label htmlFor="name" className="block text-sm mb-1 text-lime-400">Nombre</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-400"
+              placeholder="Tu nombre"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1 text-lime-400">Correo electrónico</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-400"
+              placeholder="tucorreo@ejemplo.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm mb-1 text-lime-400">Mensaje</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="5"
+              required
+              className="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-lime-400"
+              placeholder="Cuéntame sobre tu proyecto o idea..."
+            ></textarea>
+          </div>
+
           <button
             type="submit"
-            className="bg-lime-600 hover:bg-lime-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+            className="w-full bg-lime-500 hover:bg-lime-400 text-gray-900 font-semibold px-6 py-3 rounded-lg transition"
           >
             {status === "loading" ? "Enviando..." : "Enviar mensaje"}
           </button>
 
           {status === "success" && (
-            <p className="text-green-600 mt-4">✅ Tu mensaje fue enviado correctamente.</p>
+            <p className="text-green-400 text-center mt-4">✅ Tu mensaje fue enviado correctamente.</p>
           )}
           {status === "error" && (
-            <p className="text-red-600 mt-4">❌ Ocurrió un error al enviar. Intenta de nuevo.</p>
+            <p className="text-red-400 text-center mt-4">❌ Ocurrió un error al enviar. Intenta de nuevo.</p>
           )}
         </form>
       </div>

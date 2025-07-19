@@ -51,19 +51,21 @@ export default function Budget() {
   };
 
   return (
-    <section id="presupuesto" className="py-24 bg-white text-center">
+<section id="presupuesto" className="py-28 bg-[#111827] text-white">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-4 text-gray-800">Presupuesto rápido</h2>
-        <p className="text-gray-600 mb-6">
-          Selecciona lo que necesitas y te daremos una estimación.
+        <h2 className="text-4xl font-bold mb-4 text-center">Calcula tu presupuesto</h2>
+        <p className="text-gray-300 mb-8 text-center">
+          Elige el tipo de proyecto y los extras que te interesen. Te enviaremos una estimación aproximada por email.
         </p>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="bg-lime-600 hover:bg-lime-700 text-white font-semibold px-8 py-3 rounded-full transition"
-        >
-          {open ? "Cerrar formulario" : "Solicitar presupuesto"}
-        </button>
+        <div className="text-center">
+          <button
+            onClick={() => setOpen(!open)}
+            className="bg-lime-500 hover:bg-lime-400 text-gray-900 font-semibold px-8 py-3 rounded-full transition"
+          >
+            {open ? "Cerrar formulario" : "Solicitar presupuesto"}
+          </button>
+        </div>
 
         <AnimatePresence>
           {open && (
@@ -73,20 +75,20 @@ export default function Budget() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4 }}
-              className="mt-10 text-left space-y-8 overflow-hidden"
+              className="mt-10 text-left space-y-10 overflow-hidden bg-white/5 backdrop-blur-lg p-6 rounded-2xl border border-white/10"
             >
               <div>
-                <h3 className="font-semibold mb-2 text-gray-800">Tipo de proyecto</h3>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <h3 className="text-lime-400 font-semibold mb-3">1. Tipo de proyecto</h3>
+                <div className="flex flex-wrap gap-3">
                   {OPTIONS.tipo.map((opt) => (
                     <button
                       key={opt.name}
                       type="button"
                       onClick={() => setSelectedType(opt)}
-                      className={`px-4 py-2 rounded-full border text-sm ${
+                      className={`px-4 py-2 rounded-full border text-sm transition ${
                         selectedType?.name === opt.name
-                          ? "bg-lime-600 text-white"
-                          : "bg-white text-gray-700"
+                          ? "bg-lime-500 text-gray-900 border-lime-500"
+                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                       }`}
                     >
                       {opt.name} ({opt.range})
@@ -96,17 +98,17 @@ export default function Budget() {
               </div>
 
               <div>
-                <h3 className="font-semibold mb-2 text-gray-800">Extras</h3>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <h3 className="text-lime-400 font-semibold mb-3">2. Funcionalidades extra</h3>
+                <div className="flex flex-wrap gap-3">
                   {OPTIONS.extras.map((ext) => (
                     <button
                       key={ext.name}
                       type="button"
                       onClick={() => toggleExtra(ext)}
-                      className={`px-4 py-2 rounded-full border text-sm ${
+                      className={`px-4 py-2 rounded-full border text-sm transition ${
                         extras.includes(ext)
-                          ? "bg-lime-100 border-lime-600 text-lime-700"
-                          : "bg-white text-gray-700"
+                          ? "bg-lime-100 text-lime-700 border-lime-400"
+                          : "bg-white/10 text-white border-white/20 hover:bg-white/20"
                       }`}
                     >
                       {ext.name} (+{ext.cost}€)
@@ -119,17 +121,17 @@ export default function Budget() {
                 <button
                   type="submit"
                   disabled={!selectedType || sending}
-                  className="bg-lime-600 text-white font-medium px-6 py-3 rounded-lg hover:bg-lime-700 transition"
+                  className="bg-lime-500 hover:bg-lime-400 text-gray-900 font-bold px-8 py-3 rounded-full transition"
                 >
-                  {sending ? "Enviando..." : "Enviar presupuesto"}
+                  {sending ? "Enviando..." : "Enviar solicitud"}
                 </button>
-              </div>
 
-              {sent && (
-                <p className="text-green-600 text-center">
-                  ✅ Tu solicitud fue enviada correctamente.
-                </p>
-              )}
+                {sent && (
+                  <p className="text-green-400 text-center mt-4">
+                    ✅ Tu solicitud fue enviada correctamente. Te responderé en breve.
+                  </p>
+                )}
+              </div>
             </motion.form>
           )}
         </AnimatePresence>

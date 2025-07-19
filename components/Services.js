@@ -5,57 +5,57 @@ import { motion, AnimatePresence } from "framer-motion";
 const services = [
   {
     title: "Landing Pages",
-    icon: <FaRocket className="text-5xl text-white mb-4" />,
-    summary: "Páginas enfocadas en campañas y conversiones.",
+    icon: <FaRocket className="text-5xl text-lime-400 mb-4" />,
+    summary: "Convierte visitas en clientes con una web enfocada a resultados.",
     description:
-      "Diseñadas para captar leads o ventas con velocidad, claridad de mensaje y diseño impactante. Ideales para campañas de marketing o producto.",
+      "Diseñadas para lanzar campañas, validar ideas o captar leads. Son rápidas, directas, responsive y optimizadas para marketing digital.",
     tech: ["Next.js", "Tailwind", "Framer Motion", "Vercel"],
     includes: [
-      "Diseño responsive",
-      "SEO básico",
-      "Formulario funcional",
-      "Animaciones suaves",
+      "Diseño responsive y visual",
+      "SEO técnico básico",
+      "Formulario funcional integrado",
+      "Animaciones profesionales",
     ],
     ideal: "Emprendedores, lanzamientos, campañas publicitarias",
+    price: "Desde 300€",
   },
   {
-    title: "Tiendas Online (Shopify & WordPress)",
-    icon: <FaStore className="text-5xl text-white mb-4" />,
-    summary: "Comercios digitales listos para vender.",
+    title: "Tiendas Online",
+    icon: <FaStore className="text-5xl text-lime-400 mb-4" />,
+    summary: "Ecommerce profesional listo para vender desde el día 1.",
     description:
-      "Tiendas potentes con catálogo, sistema de pagos, gestión interna y diseño profesional adaptado a marca.",
-    tech: ["Shopify", "WordPress", "WooCommerce", "Liquid"],
+      "Creamos tu tienda online con pasarela de pago, catálogo, sistema de gestión y diseño que representa tu marca. Ideal para crecer online.",
+    tech: ["Shopify", "WooCommerce", "WordPress", "Liquid"],
     includes: [
-      "Catálogo con filtros",
-      "Carrito y checkout",
-      "Integración de pagos",
-      "Diseño de marca",
+      "Diseño adaptado a tu branding",
+      "Checkout, carrito e inventario",
+      "Integración con métodos de pago",
+      "Optimización para móvil y SEO",
     ],
-    ideal: "Marcas de ropa, ecommerce, negocios digitales",
+    ideal: "Negocios digitales, marcas de ropa, ecommerce en expansión",
+    price: "Desde 700€",
   },
   {
-    title: "Webs corporativas & Desarrollo a medida",
-    icon: <FaLaptopCode className="text-5xl text-white mb-4" />,
-    summary: "Sitios web serios con soluciones personalizadas.",
+    title: "Desarrollo a Medida",
+    icon: <FaLaptopCode className="text-5xl text-lime-400 mb-4" />,
+    summary: "Webs corporativas, apps o dashboards hechos a medida.",
     description:
-      "Desarrollo de soluciones a medida: páginas corporativas, intranets, apps SaaS, dashboards, CMS o APIs.",
-    tech: ["React", "Next.js", "Supabase", "Node.js"],
+      "Soluciones web completas y escalables: desde una web de empresa hasta apps SaaS, CMS, APIs o paneles con base de datos. Totalmente personalizable.",
+    tech: ["React", "Next.js", "Supabase", "Node.js", "Zustand"],
     includes: [
-      "Backend personalizado",
-      "CMS editable",
-      "Optimización avanzada",
+      "Frontend y backend integrados",
+      "CMS editable y paneles de control",
+      "SEO + rendimiento optimizado",
       "Escalabilidad profesional",
     ],
-    ideal: "Startups, empresas tecnológicas, B2B",
+    ideal: "Startups, empresas tecnológicas, B2B, SaaS",
+    price: "Desde 1500€",
   },
 ];
 
 export default function Services() {
   const [openIndex, setOpenIndex] = useState(null);
-
-  const toggle = (i) => {
-    setOpenIndex(openIndex === i ? null : i);
-  };
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
   return (
     <section id="services" className="py-28 bg-gradient-to-br from-gray-900 to-gray-800">
@@ -91,13 +91,13 @@ export default function Services() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="text-sm text-left text-gray-200 mt-4 space-y-3 overflow-hidden"
+                    className="text-sm text-left text-gray-200 mt-4 space-y-4 overflow-hidden"
                   >
                     <p>{service.description}</p>
 
                     <div>
-                      <p className="font-medium text-white mb-1">Tecnologías:</p>
-                      <div className="flex flex-wrap gap-2">
+                      <p className="font-semibold text-white">Tecnologías:</p>
+                      <div className="flex flex-wrap gap-2 mt-1">
                         {service.tech.map((t, j) => (
                           <span
                             key={j}
@@ -110,7 +110,7 @@ export default function Services() {
                     </div>
 
                     <div>
-                      <p className="font-medium text-white mb-1">Incluye:</p>
+                      <p className="font-semibold text-white mt-2">Incluye:</p>
                       <ul className="list-disc list-inside space-y-1">
                         {service.includes.map((el, j) => (
                           <li key={j}>{el}</li>
@@ -118,7 +118,11 @@ export default function Services() {
                       </ul>
                     </div>
 
-                    <p className="italic text-gray-300">Ideal para: {service.ideal}</p>
+                    <div className="text-sm italic text-gray-300">
+                      Ideal para: {service.ideal}
+                    </div>
+
+                    <div className="mt-2 font-bold text-lime-400">{service.price}</div>
                   </motion.div>
                 )}
               </AnimatePresence>
