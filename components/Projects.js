@@ -24,11 +24,11 @@ const projects = [
     link: "#",
   },
   {
-    name: "InnovaFit",
-    subtitle: "Web corporativa",
+    name: "Aholú",
+    subtitle: "Landing Page",
     description:
-      "Web adaptable y multiidioma para centro fitness. Diseño claro y velocidad de carga optimizada. Tecnologías: Next.js, i18n, Vercel, Tailwind.",
-    link: "#",
+      "Web para contacto de ahorro de energia. Diseño claro y velocidad de carga optimizada. Tecnologías: Next.js, i18n, Vercel, Tailwind.",
+    link: "https://aholulanding.vercel.app",
   },
   {
     name: "Boxtar",
@@ -47,16 +47,17 @@ const projects = [
 ];
 
 const cardColors = [
-  "from-lime-500 to-green-600",
-  "from-pink-500 to-rose-600",
-  "from-blue-500 to-cyan-600",
-  "from-orange-500 to-amber-600",
-  "from-purple-500 to-indigo-600",
-  "from-teal-500 to-emerald-600",
+  "from-slate-100 to-slate-200",
+  "from-rose-100 to-pink-200",
+  "from-sky-100 to-blue-200",
+  "from-amber-100 to-orange-200",
+  "from-purple-100 to-indigo-200",
+  "from-teal-100 to-emerald-200",
 ];
 
 export default function Projects() {
   const [isMobile, setIsMobile] = useState(false);
+  const [activeCardIndex, setActiveCardIndex] = useState(null);
 
   useEffect(() => {
     const checkScreen = () => setIsMobile(window.innerWidth < 640);
@@ -64,6 +65,11 @@ export default function Projects() {
     window.addEventListener("resize", checkScreen);
     return () => window.removeEventListener("resize", checkScreen);
   }, []);
+
+  const handleCardClick = (i) => {
+    if (!isMobile) return;
+    setActiveCardIndex(activeCardIndex === i ? null : i);
+  };
 
   return (
     <section id="projects" className="py-24 bg-white text-gray-900">
@@ -81,26 +87,27 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative group rounded-xl overflow-hidden shadow-lg transition-all hover:-translate-y-1 bg-gradient-to-br ${cardColors[i % cardColors.length]} h-40`}
+              className={`relative group rounded-xl overflow-hidden shadow-md transition-all hover:-translate-y-1 bg-gradient-to-br ${cardColors[i % cardColors.length]} h-40`}
+              onClick={() => handleCardClick(i)}
             >
-              {/* Contenido centrado */}
-              <div className="flex flex-col justify-center items-center h-full z-10 relative px-4 transition-opacity duration-300 group-hover:opacity-0 text-white">
+              {/* Vista base: título + subtítulo */}
+              <div className="flex flex-col justify-center items-center h-full z-10 relative px-4 transition-opacity duration-300 text-gray-800">
                 <h3 className="text-xl font-bold">{proj.name}</h3>
                 <p className="text-sm">{proj.subtitle}</p>
               </div>
 
-              {/* Hover en escritorio */}
+              {/* Descripción en hover (desktop) */}
               {!isMobile && (
-                <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 text-left text-sm z-20 text-white">
-                  <h4 className="text-lime-400 font-semibold mb-2">{proj.name}</h4>
+                <div className="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5 text-left text-sm z-20 text-gray-900">
+                  <h4 className="text-teal-600 font-semibold mb-2">{proj.name}</h4>
                   <p>{proj.description}</p>
                 </div>
               )}
 
-              {/* En móvil: siempre visible */}
-              {isMobile && (
-                <div className="absolute inset-0 bg-black/80 p-5 flex flex-col justify-end text-sm z-20 text-white">
-                  <h4 className="text-lime-400 font-semibold">{proj.name}</h4>
+              {/* Descripción al hacer clic en móvil */}
+              {isMobile && activeCardIndex === i && (
+                <div className="absolute inset-0 bg-white/90 p-5 flex flex-col justify-end text-sm z-20 text-gray-900">
+                  <h4 className="text-teal-600 font-semibold">{proj.name}</h4>
                   <p>{proj.description}</p>
                 </div>
               )}
