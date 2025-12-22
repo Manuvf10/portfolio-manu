@@ -11,7 +11,7 @@ const fondoImgs = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[#0d0d0d] overflow-hidden text-white">
+    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[#0d0d0d] overflow-hidden text-white pt-28 sm:pt-32">
       
       {/* Fondo tipo collage difuminado */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
