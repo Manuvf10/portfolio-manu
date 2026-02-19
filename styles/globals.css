@@ -2,29 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+  background: #05070d;
+  color: #ffffff;
 }
 
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(163, 230, 53, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(163, 230, 53, 0.1) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
 
-@keyframes slideDown {
-  0% {
-    transform: translateY(-20%);
-  }
-  100% {
-    transform: translateY(0%);
-  }
-}
-.animate-slideDown {
-  animation: slideDown 40s linear infinite;
-}
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.animate-gradient {
-  animation: gradient 15s ease infinite;
+.glass-card {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
 }

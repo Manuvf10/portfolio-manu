@@ -1,86 +1,90 @@
 import { motion } from "framer-motion";
+import { ArrowRight, BadgeCheck, CalendarClock, Sparkles } from "lucide-react";
 
-const fondoImgs = [
-  "/proyectos/youwish.png",
-  "/proyectos/diadica.png",
-  "/proyectos/quattroislands.png",
-  "/proyectos/youwish.png",
-  "/proyectos/diadica.png",
-  "/proyectos/quattroislands.png",
+const metrics = [
+  { value: "+25", label: "proyectos lanzados" },
+  { value: "< 48h", label: "tiempo de respuesta" },
+  { value: "4.9/5", label: "satisfacción media" },
 ];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[#0d0d0d] overflow-hidden text-white pt-28 sm:pt-32">
-      
-      {/* Fondo tipo collage difuminado */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="w-[180%] h-[180%] scale-100 sm:scale-110 grid grid-cols-2 sm:grid-cols-3 gap-6 opacity-25 blur-sm rotate-[-2deg]">
-          {fondoImgs.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`bg-${i}`}
-              className="w-full h-full object-cover rounded-xl"
-            />
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-[#0d0d0d]/75 backdrop-blur-sm" />
+    <section className="relative min-h-screen overflow-hidden bg-[#070b14] px-6 pb-24 pt-32 text-white sm:pt-36">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-[-18rem] h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-lime-400/20 blur-[120px]" />
+        <div className="absolute -left-24 bottom-10 h-64 w-64 rounded-full bg-cyan-400/20 blur-[100px]" />
+        <div className="absolute -right-16 top-20 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-[110px]" />
+        <div className="hero-grid absolute inset-0 opacity-20" />
       </div>
 
-      {/* Contenido principal */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
-        className="relative z-10 max-w-4xl w-full"
-      >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
-          Webs y cartas digitales para <span className="text-lime-400">negocios locales</span> que quieren destacar
-        </h1>
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-lime-300 backdrop-blur-xl">
+            <Sparkles size={16} />
+            Diseño web + estrategia comercial
+          </span>
 
-        <p className="text-gray-400 text-lg sm:text-xl md:text-2xl mb-12 leading-relaxed font-light">
-          Creamos páginas visuales, modernas y rápidas que posicionan tu marca y transforman visitas en clientes. Desde cartas QR hasta landings a medida.
-        </p>
+          <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl xl:text-6xl">
+            Transformo tu web en una <span className="text-lime-300">máquina de confianza</span> que atrae clientes y genera ventas.
+          </h1>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+            Soy Manu Vera, desarrollador web freelance. Creo experiencias digitales premium para negocios ambiciosos:
+            páginas rápidas, copy persuasivo, posicionamiento y un diseño con personalidad para que tu marca destaque en serio.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-lime-300 px-8 py-3.5 text-base font-semibold text-slate-900 transition hover:bg-lime-200"
+            >
+              Quiero mi propuesta estratégica
+              <ArrowRight size={18} />
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-base font-medium text-white transition hover:border-lime-300 hover:text-lime-300"
+            >
+              Ver resultados reales
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {metrics.map((item) => (
+              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                <p className="text-2xl font-bold text-lime-300">{item.value}</p>
+                <p className="text-sm text-slate-300">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="glass-card space-y-5 rounded-3xl p-7"
+        >
+          <h2 className="text-2xl font-semibold">¿Qué consigues trabajando conmigo?</h2>
+          <ul className="space-y-4 text-slate-200">
+            <li className="flex items-start gap-3"><BadgeCheck className="mt-1 text-lime-300" size={18} /> Diagnóstico gratuito de tu web o idea actual.</li>
+            <li className="flex items-start gap-3"><BadgeCheck className="mt-1 text-lime-300" size={18} /> Plan claro con tiempos, entregables y enfoque a conversión.</li>
+            <li className="flex items-start gap-3"><BadgeCheck className="mt-1 text-lime-300" size={18} /> Diseño premium optimizado para móvil, SEO y anuncios.</li>
+            <li className="flex items-start gap-3"><BadgeCheck className="mt-1 text-lime-300" size={18} /> Soporte cercano para escalar cuando empieces a vender más.</li>
+          </ul>
+
           <a
             href="#contact"
-            className="bg-lime-400 hover:bg-lime-300 text-gray-900 font-semibold px-8 py-3 rounded-full transition text-lg w-full sm:w-auto shadow"
+            className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-lime-300 hover:text-lime-200"
           >
-            Solicitar propuesta
+            <CalendarClock size={16} /> Reservar una llamada de 15 minutos
           </a>
-          <a
-            href="#projects"
-            className="border border-white/20 text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full transition text-lg w-full sm:w-auto shadow"
-          >
-            Ver trabajos
-          </a>
-        </div>
-
-        {/* Stats 
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-10 text-white text-center">
-          <Stat title="Negocios digitalizados" value="+20" />
-          <Stat title="Cartas activas" value="+20" />
-          <Stat title="Proyectos actuales" value="5" />
-        </div>
-*/}
-        {/* Firma profesional */}
-        <p className="text-sm text-gray-600 mt-10 italic">mvf.dev — Desarrollo web para negocios reales.</p>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
-  );
-}
-
-function Stat({ title, value }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="text-4xl font-bold text-lime-400">{value}</div>
-      <div className="text-sm text-gray-400 mt-1">{title}</div>
-    </motion.div>
   );
 }

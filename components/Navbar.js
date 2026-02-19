@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
+const links = [
+  { href: "#services", text: "Servicios" },
+  { href: "#projects", text: "Proyectos" },
+  { href: "#contact", text: "Contacto" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,50 +17,35 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/70 shadow backdrop-blur-md border-b border-gray-200" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <a
-          href="#"
-          className={`text-2xl font-mono font-bold tracking-tight transition-colors duration-300 ${
-            scrolled ? "text-gray-900" : "text-white"
-          }`}
-        >
-          mvf<span className="text-lime-500">.dev</span>
+    <nav className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled ? "border-b border-white/10 bg-[#070b14]/85 backdrop-blur-xl" : "bg-transparent"}`}>
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#" className="text-2xl font-bold tracking-tight text-white">
+          mvf<span className="text-lime-300">.studio</span>
         </a>
 
-
-
-        {/* Desktop menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <NavLink href="#services" text="Servicios" />
-          <NavLink href="#projects" text="Proyectos" />
-          <NavLink href="#contact" text="Contacto" />
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <NavLink key={link.href} {...link} />
+          ))}
+          <a href="#contact" className="rounded-full bg-lime-300 px-5 py-2 text-sm font-semibold text-slate-900 transition hover:bg-lime-200">
+            Empezar proyecto
+          </a>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden text-gray-800 hover:text-lime-500 transition"
-          aria-label="Toggle menu"
-        >
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white md:hidden" aria-label="Toggle menu">
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile menu overlay */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white/90 backdrop-blur flex flex-col items-center justify-center space-y-8 z-40 transition-all">
-          <NavLinkMobile href="#services" text="Servicios" onClick={toggleMenu} />
-          <NavLinkMobile href="#projects" text="Proyectos" onClick={toggleMenu} />
-          <NavLinkMobile href="#contact" text="Contacto" onClick={toggleMenu} />
+        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-[#070b14]/95 text-white backdrop-blur-xl md:hidden">
+          {links.map((link) => (
+            <NavLinkMobile key={link.href} {...link} onClick={() => setMenuOpen(false)} />
+          ))}
+          <a href="#contact" onClick={() => setMenuOpen(false)} className="rounded-full bg-lime-300 px-7 py-3 font-semibold text-slate-900">
+            Empezar proyecto
+          </a>
         </div>
       )}
     </nav>
@@ -63,10 +54,7 @@ export default function Navbar() {
 
 function NavLink({ href, text }) {
   return (
-    <a
-      href={href}
-      className="text-gray-700 hover:text-lime-500 text-sm font-medium transition"
-    >
+    <a href={href} className="text-sm font-medium text-slate-200 transition hover:text-lime-300">
       {text}
     </a>
   );
@@ -74,11 +62,7 @@ function NavLink({ href, text }) {
 
 function NavLinkMobile({ href, text, onClick }) {
   return (
-    <a
-      href={href}
-      onClick={onClick}
-      className="text-gray-900 text-xl font-semibold hover:text-lime-500 transition"
-    >
+    <a href={href} onClick={onClick} className="text-2xl font-semibold hover:text-lime-300">
       {text}
     </a>
   );
