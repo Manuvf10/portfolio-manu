@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
@@ -19,6 +20,7 @@ const projects = [
     image: "/proyectos/youwish.png",
     link: "https://www.youwish.cat",
     impact: "+32% tiempo en página",
+    impact: "+32% tiempo en página",
   },
   {
     name: "Quattro Islands",
@@ -28,6 +30,7 @@ const projects = [
     image: "/proyectos/quattroislands.png",
     link: "https://quattro-islands.vercel.app",
     impact: "+41% formularios completados",
+    impact: "+41% formularios completados",
   },
   {
     name: "Diadica",
@@ -36,6 +39,7 @@ const projects = [
       "Interfaz intuitiva con enfoque en usabilidad y escalabilidad para acompañar crecimiento de usuarios.",
     image: "/proyectos/diadica.png",
     link: "https://www.diadica.com",
+    impact: "UX renovada en 4 semanas",
     impact: "UX renovada en 4 semanas",
   },
 ];
@@ -61,11 +65,13 @@ export default function Projects() {
           {projects.map((proj, i) => (
             <motion.a
               key={proj.name}
+              key={proj.name}
               href={proj.link}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.08 }}
               transition={{ delay: i * 0.08 }}
               viewport={{ once: true }}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-lime-300/60 hover:shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
