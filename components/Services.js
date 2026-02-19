@@ -35,7 +35,7 @@ export default function Services() {
           className="mx-auto mb-14 max-w-3xl text-center"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-lime-300">Servicios</p>
-          <h2 className="text-4xl font-bold leading-tight sm:text-5xl">No hago “solo una web”, creo una herramienta de crecimiento.</h2>
+          <h2 className="text-4xl font-bold leading-tight sm:text-5xl">Tu herramienta de crecimiento.</h2>
           <p className="mt-5 text-lg text-slate-300">Cada proyecto combina diseño, desarrollo y marketing para ayudarte a vender mejor y diferenciarte de tu competencia.</p>
         </motion.div>
 

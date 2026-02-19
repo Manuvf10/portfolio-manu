@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { ArrowUpRight } from "lucide-react";
+
 
 const projects = [
   {
@@ -8,7 +8,7 @@ const projects = [
     subtitle: "SaaS Marketplace de servicios",
     description:
       "Plataforma para conectar clientes y profesionales por especialidad, con autenticación y backend en Supabase para escalar con seguridad.",
-    image: "/proyectos/todoslosoficios.png",
+    image: "/proyectos/todoslosoficos.png",
     link: "https://todoslosoficiosweb.vercel.app",
     impact: "SaaS con login + Supabase",
   },
@@ -51,10 +51,8 @@ export default function Projects() {
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.22em] text-lime-300">Casos de éxito</p>
-            <h2 className="text-4xl font-bold sm:text-5xl">Proyectos creados para escalar ventas y operaciones.</h2>
-            <p className="mt-4 text-lg text-slate-300">
-              Desde ecommerce hasta SaaS: producto, experiencia y arquitectura alineados con crecimiento real.
-            </p>
+            
+            
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-lime-300 hover:text-lime-200">
             Quiero un proyecto así <ArrowUpRight size={16} />
@@ -65,14 +63,14 @@ export default function Projects() {
           {projects.map((proj, i) => (
             <motion.a
               key={proj.name}
-              key={proj.name}
+          
               href={proj.link}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08 }}
-              transition={{ delay: i * 0.08 }}
+            
               viewport={{ once: true }}
               className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition hover:border-lime-300/60 hover:shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
             >

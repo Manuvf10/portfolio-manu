@@ -25,7 +25,7 @@ export default function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-lime-300 backdrop-blur-xl">
             <Sparkles size={16} />
-            Diseño web + estrategia comercial
+            Diseño web a medida 
           </span>
 
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl xl:text-6xl">
@@ -33,7 +33,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-            Soy Manu Vera, desarrollador web freelance. Creo experiencias digitales premium para negocios ambiciosos:
+            Soy un desarrollador web freelance. Creo experiencias digitales premium para negocios ambiciosos:
             páginas rápidas, copy persuasivo, posicionamiento y un diseño con personalidad para que tu marca destaque en serio.
           </p>
 

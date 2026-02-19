@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Manu Vera | Desarrollo Web Premium para Empresas</title>
+        <title> Desarrollo Web Premium </title>
         <meta
           name="description"
           content="Diseño y desarrollo web premium para negocios que quieren vender más. Estrategia digital, UX y rendimiento para convertir tráfico en clientes."
@@ -27,7 +27,6 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
-        <About />
         <Services />
         <Projects />
         <Contact />
